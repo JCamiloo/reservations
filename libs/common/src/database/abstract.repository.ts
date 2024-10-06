@@ -21,7 +21,7 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
       .findOne(filterQuery)
       .lean<TDocument>(true);
 
-    if (document) {
+    if (!document) {
       this.logger.warn('Document was not found with filterQuery', filterQuery);
       throw new NotFoundException('Document was not found');
     }
@@ -39,7 +39,7 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
       })
       .lean<TDocument>(true);
 
-    if (document) {
+    if (!document) {
       this.logger.warn('Document was not found with filterQuery', filterQuery);
       throw new NotFoundException('Document was not found');
     }
