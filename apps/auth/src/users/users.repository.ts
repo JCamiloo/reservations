@@ -1,7 +1,6 @@
-import { AbstractRepository } from '@app/common';
 import { Injectable, Logger } from '@nestjs/common';
-import { UserDocument } from './models/users.schema';
 import { InjectModel } from '@nestjs/mongoose';
+import { AbstractRepository, UserDocument } from '@app/common';
 import { Model } from 'mongoose';
 
 @Injectable()
