@@ -6,6 +6,7 @@ import {
   LoggerModule,
   AUTH_SERVICE,
   PAYMENTS_SERVICE,
+  HealthModule,
 } from '@app/common';
 import * as Joi from 'joi';
 import { ReservationsService } from './reservations.service';
@@ -19,6 +20,7 @@ import {
 @Module({
   imports: [
     LoggerModule,
+    HealthModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
