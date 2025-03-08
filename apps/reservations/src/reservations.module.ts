@@ -12,10 +12,7 @@ import * as Joi from 'joi';
 import { ReservationsService } from './reservations.service';
 import { ReservationsController } from './reservations.controller';
 import { ReservationsRepository } from './reservations.repository';
-import {
-  ReservationDocument,
-  ReservationSchema,
-} from './models/reservation.schema';
+import { Reservation } from './models/reservation.entity';
 
 @Module({
   imports: [
@@ -24,7 +21,6 @@ import {
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
-        MONGODB_URI: Joi.string().required(),
         PORT: Joi.number().required(),
         AUTH_HOST: Joi.string().required(),
         AUTH_PORT: Joi.number().required(),
@@ -33,9 +29,7 @@ import {
       }),
     }),
     DatabaseModule,
-    DatabaseModule.forFeature([
-      { name: ReservationDocument.name, schema: ReservationSchema },
-    ]),
+    DatabaseModule.forFeature([Reservation]),
     ClientsModule.registerAsync([
       {
         name: AUTH_SERVICE,
