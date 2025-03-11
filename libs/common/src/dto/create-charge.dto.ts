@@ -6,8 +6,9 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { CardDto } from './card.dto';
+import { CreateChargeMessage } from '../types';
 
-export class CreateChargeDTO {
+export class CreateChargeDTO implements Omit<CreateChargeMessage, 'email'> {
   @IsDefined()
   @IsNotEmptyObject()
   @ValidateNested()
